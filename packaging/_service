@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+  Upstream release tarballs are NOT stored in git. OBS fetches both arch
+  tarballs at source-service time with download_url; the spec verifies each
+  one's SHA256 in %prep and %ifarch picks the one it actually needs.
+  scripts/bump-version.sh rewrites the URLs/filenames below (and the
+  checksums + Version in the spec) when upstream publishes a new release.
+-->
+<services>
+  <service name="download_url">
+    <param name="url">https://github.com/nklmilojevic/sofka/releases/download/v0.28.2/sofka-v0.28.2-x86_64-unknown-linux-gnu.tar.gz</param>
+    <param name="filename">sofka-v0.28.2-x86_64-unknown-linux-gnu.tar.gz</param>
+  </service>
+  <service name="download_url">
+    <param name="url">https://github.com/nklmilojevic/sofka/releases/download/v0.28.2/sofka-v0.28.2-aarch64-unknown-linux-gnu.tar.gz</param>
+    <param name="filename">sofka-v0.28.2-aarch64-unknown-linux-gnu.tar.gz</param>
+  </service>
+</services>

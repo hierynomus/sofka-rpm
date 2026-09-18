@@ -1,0 +1,18 @@
+# rpmlint filters for sofka. Everything here is inherent to repackaging
+# upstream's prebuilt, stripped Rust release binary rather than compiling
+# from source, or a deliberate packaging choice.
+
+# Upstream ships the binary already stripped; there is no separate debug
+# info to extract, and no testsuite to run in the build root either.
+addFilter(r"no-%check-section")
+
+# Source0/1 are bare filenames, not URLs - see the comment in _service and
+# in the README ("Kept as bare filenames so OBS does not treat them as
+# stored blobs"). rpmlint's invalid-url check doesn't know about scmsync
+# source services.
+addFilter(r"invalid-url Source[01]:")
+
+# Spell-checker false positives: upstream's own tagline and library/
+# ecosystem names (kube-rs, ratatui), plus our own target distro - none of
+# which are in the dictionary rpmlint's Enchant backend uses.
+addFilter(r"spelling-error \('(reimagined|kube|ratatui|openSUSE)'")
