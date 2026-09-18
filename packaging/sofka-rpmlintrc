@@ -16,3 +16,4 @@ addFilter(r"invalid-url Source[01]:")
 # ecosystem names (kube-rs, ratatui), plus our own target distro - none of
 # which are in the dictionary rpmlint's Enchant backend uses.
 addFilter(r"spelling-error \('(reimagined|kube|ratatui|openSUSE)'")
+# webhook verification test - safe to close/delete
