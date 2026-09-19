@@ -6,13 +6,11 @@
 # info to extract, and no testsuite to run in the build root either.
 addFilter(r"no-%check-section")
 
-# Source0/1 are bare filenames, not URLs - see the comment in _service and
-# in the README ("Kept as bare filenames so OBS does not treat them as
-# stored blobs"). rpmlint's invalid-url check doesn't know about scmsync
-# source services.
-addFilter(r"invalid-url Source[01]:")
-
-# Spell-checker false positives: upstream's own tagline and library/
-# ecosystem names (kube-rs, ratatui), plus our own target distro - none of
-# which are in the dictionary rpmlint's Enchant backend uses.
-addFilter(r"spelling-error \('(reimagined|kube|ratatui|openSUSE)'")
+# NOTE: a local rpmlint (2.10, full Enchant dictionary + network-capable
+# URL check) also flags invalid-url on the bare Source0/1 filenames and
+# spelling-error on upstream's tagline / kube-rs / ratatui / openSUSE.
+# Neither fires in OBS's actual build root (rpmlint 2.7, no spell
+# dictionary installed, sandboxed/no network) - filtering them there is
+# itself an rpmlint error (unused-rpmlintrc-filter), so they're
+# deliberately left out here. Re-add if a future OBS/rpmlint upgrade
+# starts producing them for real.
