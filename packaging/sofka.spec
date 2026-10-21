@@ -13,11 +13,11 @@
 # SHA256SUMS asset. Bumped in lockstep with Version by
 # scripts/bump-version.sh. Verified in %%prep so a changed-out-from-under-us
 # payload fails the build instead of shipping.
-%global sofka_sha256_x86_64  113a656a564bf5b589b198fba9549958029a865cf4d70512c68fefd8e323f630
-%global sofka_sha256_aarch64 5934d1b6924f8e3a48e3a742d114d283ea041435988d262dc99ad80c633de06d
+%global sofka_sha256_x86_64  e9823c085ce1ed49db285b220a15e5e2888fae8b96efa4959ca5707a2088a195
+%global sofka_sha256_aarch64 ee6aae697f83634ea7e47803c2032e6cde3424dd2f7266d9a3054ff3c383a427
 
 Name:           sofka
-Version:        0.31.13
+Version:        0.31.14
 # OBS supplies the real release (lp160.N.M); 0 is the openSUSE convention.
 Release:        0
 Summary:        A Kubernetes TUI, reimagined in Rust
@@ -70,6 +70,9 @@ install -Dm 0755 sofka %{buildroot}%{_bindir}/sofka
 %{_bindir}/sofka
 
 %changelog
+* Wed Oct 21 2026 jeroen <jeroen@hierynomus.com> - 0.31.14-0
+- Update to upstream 0.31.14
+
 * Mon Oct 19 2026 jeroen <jeroen@hierynomus.com> - 0.31.13-0
 - Update to upstream 0.31.13
 
